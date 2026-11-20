@@ -13,6 +13,14 @@ app runs frame interpolation on a `MediaProjection` capture and composites
 the generated frames in a system overlay sitting on top of the target game.
 End-to-end frame generation works today on Adreno 7xx-class GPUs and newer.
 
+> [!IMPORTANT]
+> **Lock the display refresh rate to its maximum (e.g. 120/144 Hz) before using this app.**
+> Some systems (ColorOS and others) drop the refresh rate back to 60 Hz when no touch
+> input is detected, to save power. Frame generation depends on a stable high refresh
+> rate output — a drop to 60 Hz will break interpolation and cause stutter or dropped
+> frames. Set the highest refresh rate manually in the system display settings (not
+> "Auto"/"Adaptive") and make sure the game also runs at that rate.
+
 ## What's different in this fork (Plus)
 
 Everything from upstream works as before; on top of it, this fork adds:
